@@ -19,10 +19,6 @@ public class MainController {
         this.categoryRepository = categoryRepository;
     }
 
-//    @RequestMapping("")
-//    public String index() {
-//        return "index (2).html";
-//    }
 
     @GetMapping("/create")
     public String populateDb() {
@@ -125,7 +121,7 @@ public class MainController {
                 new Category(33, "Environment", 3)
         ));
 
-        return "redirect:/categories";
+        return "redirect:/form";
     }
 
 }

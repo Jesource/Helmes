@@ -1,6 +1,5 @@
 package ee.helmes.home.assignment;
 
-import ee.helmes.home.assignment.models.Category;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
