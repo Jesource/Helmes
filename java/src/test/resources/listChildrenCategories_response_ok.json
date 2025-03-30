@@ -1,0 +1,17 @@
+[
+  {
+    "id": 37,
+    "name": "Creative industries",
+    "parentId": 3
+  },
+  {
+    "id": 29,
+    "name": "Energy technology",
+    "parentId": 3
+  },
+  {
+    "id": 33,
+    "name": "Environment",
+    "parentId": 3
+  }
+]

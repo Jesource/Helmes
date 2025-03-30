@@ -1,0 +1,24 @@
+<div>
+  <ng-container *ngFor="let categoryDTO of categories">
+    <div *ngIf="!categoryDTO.subcategories?.length">
+<!--      Leaf category - has no subcategories -->
+      <input type="checkbox"
+             [value]="categoryDTO.category.id"
+             (change)="onCheckboxChange($event, categoryDTO.category.id)"
+      />
+      {{ categoryDTO.category.name }}
+    </div>
+
+    <div *ngIf="categoryDTO.subcategories?.length">
+<!--      Parent category-->
+      <strong style="background-color: lightgray">{{ categoryDTO.category.name }}</strong>
+      <ul>
+        <app-category
+          [categories]="categoryDTO.subcategories || []"
+          [selectedCategories]="selectedCategories"
+          [onCheckboxChange]="onCheckboxChange">
+        </app-category>
+      </ul>
+    </div>
+  </ng-container>
+</div>

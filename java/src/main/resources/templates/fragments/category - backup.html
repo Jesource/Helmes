@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<ul th:fragment="categoryList(categories)">
+    <div th:each="category : ${categories}">
+        <div th:class="${#lists.isEmpty(category.subcategories)} ? 'leafCategory' : 'parentCategory'">
+<!--        Add checkbox if category is a leaf category - has no subcategories -->
+            <input th:if="${#lists.isEmpty(category.subcategories)}"
+                   type="checkbox" th:id="${category.id}" th:name="idsOfInvolvedSectors" th:value="${category.id}"
+            />
+
+        <span th:text="${category.name}"></span>
+        </div>
+        <ul th:if="${not #lists.isEmpty(category.subcategories)}"
+            th:insert="~{::categoryList(${category.subcategories})}">
+        </ul>
+
+    </div>
+</ul>
+</html>

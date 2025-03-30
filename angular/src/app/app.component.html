@@ -1,0 +1,89 @@
+<!--<h2>Category Form</h2>-->
+
+<!--<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()">-->
+<!--  <p>-->
+<!--    Name: <input type="text" formControlName="name"/>-->
+<!--  </p>-->
+
+<!--&lt;!&ndash;  <h3>Categories Raw:</h3>&ndash;&gt;-->
+<!--&lt;!&ndash;  {{ categories | json }}&ndash;&gt;-->
+<!--&lt;!&ndash;  <br>&ndash;&gt;-->
+
+
+<!--  <h3>Categories:</h3>-->
+<!--  <ul>-->
+<!--    <ng-container *ngFor="let category of categories">-->
+<!--      <div>-->
+<!--        <p>-->
+<!--&lt;!&ndash;          {{ categories | json }} <br>&ndash;&gt;-->
+<!--          ID: {{ category.id }} <br>-->
+<!--          Name: {{ category.name }} <br>-->
+<!--          Subcategories: {{ category.subcategories }}-->
+<!--        </p>-->
+<!--        <br>-->
+<!--      </div>-->
+
+<!--      <li *ngIf="!category.subcategories?.length">-->
+<!--        <h6>Leaf Category</h6>-->
+<!--        <input type="checkbox"-->
+<!--               [value]="category.id"-->
+<!--               (change)="onCheckboxChange($event, category.id)"-->
+<!--        />-->
+<!--        {{ category.name }}-->
+<!--      </li>-->
+
+<!--      <li *ngIf="category.subcategories?.length">-->
+<!--        <h6>Parent Category</h6>-->
+<!--        <strong>{{ category.name }}</strong>-->
+<!--        <ul>-->
+<!--          <ng-container *ngFor="let subcategory of category.subcategories">-->
+<!--            <li>-->
+<!--              <input type="checkbox"-->
+<!--                     [value]="subcategory.id"-->
+<!--                     (change)="onCheckboxChange($event, subcategory.id)"-->
+<!--              />-->
+<!--              {{ subcategory.name }}-->
+<!--            </li>-->
+<!--          </ng-container>-->
+<!--        </ul>-->
+<!--      </li>-->
+<!--    </ng-container>-->
+<!--  </ul>-->
+
+<!--  <p>-->
+<!--    Agree to terms:-->
+<!--    <input type="checkbox" formControlName="agreeToTerms"/>-->
+<!--  </p>-->
+
+<!--  <p>-->
+<!--    <button type="submit">Submit</button>-->
+<!--    <button type="reset">Reset</button>-->
+<!--  </p>-->
+<!--</form>-->
+
+
+<form [formGroup]="categoryForm" (ngSubmit)="onSubmit()" *ngIf="categoryForm">
+  <p>
+    Name: <input type="text" formControlName="name" />
+  </p>
+
+  <h3>Categories:</h3>
+<!--  <ng-container *ngFor="let category of categories">-->
+    <app-category
+      [categories]="categories"
+      [selectedCategories]="selectedCategories"
+      [onCheckboxChange]="onCheckboxChange">
+    </app-category>
+
+<!--  </ng-container>-->
+
+  <p>
+    Agree to terms:
+    <input type="checkbox" formControlName="agreeToTerms" />
+  </p>
+
+  <p>
+    <button type="submit">Submit</button>
+    <button type="reset">Reset</button>
+  </p>
+</form>

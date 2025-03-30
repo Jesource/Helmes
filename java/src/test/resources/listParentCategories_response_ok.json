@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "name": "Manufacturing",
+    "parentId": null
+  },
+  {
+    "id": 2,
+    "name": "Service",
+    "parentId": null
+  },
+  {
+    "id": 3,
+    "name": "Other",
+    "parentId": null
+  }
+]

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml" xmlns="http://www.w3.org/1999/html">
+<head>
+    <style>
+        .parentCategory {
+          background-color: lightgray;
+        }
+    </style>
+    <style>
+        .leafCategory {
+          background-color: white;
+        }
+    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<form action="#" th:action="@{/userData}" th:object="${registrationForm}" method="post">
+    <p>Name: <input type="text" th:field="*{name}" /></p>
+    <ul th:insert="~{fragments/category :: categoryList(categories=${categories}, idsOfSelectedCategories=*{idsOfInvolvedSectors})}"></ul>
+    <p>
+        Agree to terms<input type="checkbox" id="agreeToTermsCheckbox" th:name="agreeToTerms" th:checked="*{agreeToTerms}">
+    </p>
+    <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+</form>
+
+
+</body>
+</html>
