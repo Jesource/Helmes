@@ -1,16 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-// import { RouterOutlet } from '@angular/router';
-import { ApiService, CategoryDTO } from './api.service';
-import {JsonPipe, NgForOf, NgIf} from "@angular/common";
-import {FormBuilder, FormGroup, FormControl, ReactiveFormsModule} from '@angular/forms';
+import {Component, OnInit} from '@angular/core';
+import {ApiService, CategoryDTO} from './api.service';
+import {NgIf} from "@angular/common";
+import {FormBuilder, FormGroup, ReactiveFormsModule} from '@angular/forms';
 import {CategoryComponent} from "./category/category.component";
 
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  // imports: [RouterOutlet, JsonPipe, NgForOf, NgIf, ReactiveFormsModule],
-  imports: [NgForOf, NgIf, ReactiveFormsModule, JsonPipe, CategoryComponent],
+  imports: [NgIf, ReactiveFormsModule, CategoryComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })
@@ -27,19 +25,6 @@ export class AppComponent implements OnInit {
   constructor(private apiService: ApiService, private formBuilder: FormBuilder) {}
 
   ngOnInit(): void {
-    // Initialize form
-    // console.log("Initializing categoryForm...");
-    //
-    // setTimeout(() => {
-    //   this.categoryForm = this.formBuilder.group({
-    //     name: [''],
-    //     idsOfInvolvedSectors: [[]],
-    //     agreeToTerms: [false],
-    //   });
-    // })
-    //
-    // console.log("categoryForm initialized:", this.categoryForm);
-
     // Fetch categories
     this.apiService.getCategories().subscribe((data) => {
       console.log('Requesting CategoryDTOs.');
@@ -48,29 +33,6 @@ export class AppComponent implements OnInit {
   }
 
   // Handle checkbox selection
-  // onCheckboxChange(event: any, categoryId: number): void {
-  //   console.log('Checkbox changed', categoryId);
-  //
-  //   // Debug: Check if categoryForm is defined
-  //   if (!this.categoryForm) {
-  //     console.error('categoryForm is NOT initialized at the time of checkbox change!');
-  //     return;
-  //   }
-  //
-  //   if (event.target.checked) {
-  //     // Add categoryId to list of checked IDs
-  //     this.selectedCategories.push(categoryId);
-  //   } else {
-  //     // Remove categoryId from list of checked IDs
-  //     this.selectedCategories = this.selectedCategories.filter(id => id !== categoryId);
-  //   }
-  //
-  //   if (!this.categoryForm) {
-  //     console.error('categoryForm is not initialized yet.');
-  //     return;
-  //   }
-  //   this.categoryForm.patchValue({ idsOfInvolvedSectors: this.selectedCategories });
-  // }
   onCheckboxChange = (event: any, categoryId: number): void => {
     if (!this.categoryForm) {
       console.error('categoryForm is NOT initialized at the time of checkbox change!');
@@ -89,9 +51,6 @@ export class AppComponent implements OnInit {
   };
 
 
-  onAgreeToTermsCheckboxChange = (event: any): void => {
-    //
-  }
 
   // Handle form submission
   onSubmit(): void {

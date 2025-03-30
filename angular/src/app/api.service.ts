@@ -28,10 +28,7 @@ export class ApiService {
     console.log('Configuring subscription to CategoryDTOs');
 
     const getCategoriesEndpoint = this.BASE_ENDPOINT_URL + 'categories?isDetailed=true';
-    const observable = this.http.get<CategoryDTO[]>(getCategoriesEndpoint);
-
-    console.log('Returning observable: ', observable);
-    return observable;
+    return this.http.get<CategoryDTO[]>(getCategoriesEndpoint);
   }
 
   sendFormData(categoryForm: FormGroup) {
